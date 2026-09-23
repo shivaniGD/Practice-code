@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>To-Do</title>
+<style>
+* {
+  box-sizing: border-box;
+}
+body {
+  font-family: sans-serif;
+  background: #eef1f5;
+  display: flex;
+  justify-content: center;
+  padding: 40px 16px;
+}
+.box {
+  background: #fff;
+  width: 100%;
+  max-width: 420px;
+  border-radius: 10px;
+  padding: 20px;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+}
+h2 {
+  margin-top: 0;
+}
+form {
+  display: flex;
+  gap: 8px;
+}
+form input {
+  flex: 1;
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 6px;
+}
+form button {
+  padding: 10px 16px;
+  border: none;
+  background: #3b6fd4;
+  color: #fff;
+  border-radius: 6px;
+  cursor: pointer;
+}
+ul {
+  list-style: none;
+  padding: 0;
+  margin: 16px 0 0;
+}
+li {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px 8px;
+  border-bottom: 1px solid #eee;
+  cursor: pointer;
+}
+li span {
+  flex: 1;
+}
+li.done span {
+  text-decoration: line-through;
+  color: #999;
+}
+li button {
+  border: none;
+  background: transparent;
+  color: #c0392b;
+  font-size: 16px;
+  cursor: pointer;
+}
+#hint {
+  color: #888;
+  font-size: 14px;
+  margin-top: 14px;
+}
+</style>
+</head>
+<body>
+
+<div class="box">
+  <h2>To-Do</h2>
+  <form id="frm">
+    <input id="inp" type="text" placeholder="add a task" autocomplete="off">
+    <button type="submit">Add</button>
+  </form>
+  <ul id="lst"></ul>
+  <p id="hint">Nothing here yet.</p>
+</div>
+
+<script>
+const frm = document.getElementById("frm");
+const inp = document.getElementById("inp");
+const lst = document.getElementById("lst");
+const hint = document.getElementById("hint");
+
+const refreshHint = () => {
+  hint.style.display = lst.children.length ? "none" : "block";
+};
+
+frm.addEventListener("submit", (e) => {
+  e.preventDefault();
+  const val = inp.value.trim();
+  if (!val) return;
+
+  const li = document.createElement("li");
+  const sp = document.createElement("span");
+  const x = document.createElement("button");
+
+  sp.textContent = val;
+  x.textContent = "✕";
+  x.className = "kill";
+
+  li.appendChild(sp);
+  li.appendChild(x);
+  lst.appendChild(li);
+
+  inp.value = "";
+  inp.focus();
+  refreshHint();
+});
+
+lst.addEventListener("click", (e) => {
+  const li = e.target.closest("li");
+  if (!li) return;
+
+  if (e.target.classList.contains("kill")) {
+    li.remove();
+    refreshHint();
+    return;
+  }
+
+  li.classList.toggle("done");
+});
+</script>
+</body>
+</html>

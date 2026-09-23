@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Bubbling practice</title>
+<style>
+body {
+  font-family: sans-serif;
+  max-width: 520px;
+  margin: 40px auto;
+  padding: 0 16px;
+}
+#outer {
+  background: #f8d7da;
+  padding: 30px;
+  border: 2px solid #c0392b;
+}
+#mid {
+  background: #fff3cd;
+  padding: 30px;
+  border: 2px solid #d4a017;
+}
+#inner {
+  background: #d1e7dd;
+  padding: 30px;
+  border: 2px solid #2e8b57;
+  text-align: center;
+  cursor: pointer;
+}
+label {
+  display: block;
+  margin: 14px 0 8px;
+}
+ol {
+  background: #f4f4f4;
+  padding: 12px 12px 12px 36px;
+  min-height: 40px;
+  font-family: monospace;
+}
+</style>
+</head>
+<body>
+
+<div id="outer">
+  outer
+  <div id="mid">
+    mid
+    <div id="inner">inner (click me)</div>
+  </div>
+</div>
+
+<label>
+  <input type="checkbox" id="stopIt"> stop propagation at inner
+</label>
+<button id="wipe">Clear log</button>
+
+<ol id="logBox"></ol>
+
+<script>
+const logBox = document.getElementById("logBox");
+const stopIt = document.getElementById("stopIt");
+const wipe = document.getElementById("wipe");
+
+const say = (txt) => {
+  const li = document.createElement("li");
+  li.textContent = txt;
+  logBox.appendChild(li);
+};
+
+["outer", "mid", "inner"].forEach((idd) => {
+  document.getElementById(idd).addEventListener("click", (e) => {
+    say(`${e.currentTarget.id} heard it | target was ${e.target.id}`);
+    if (idd === "inner" && stopIt.checked) {
+      e.stopPropagation();
+      say("stopped at inner");
+    }
+  });
+});
+
+document.body.addEventListener("click", (e) => {
+  if (e.target === wipe) return;
+  if (e.target.closest("#outer")) say("body heard it too");
+});
+
+wipe.addEventListener("click", () => {
+  logBox.innerHTML = "";
+});
+</script>
+</body>
+</html>
