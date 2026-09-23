@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>CSS Fundamentals Demo</title>
+<style>
+
+  
+  p {
+    color: black;
+  }
+
+  
+  .highlight {
+    color: darkorange;     
+  }
+
+ 
+  #special {
+    color: crimson;          }
+
+  
+  .selector-demo p {
+    font-style: italic;
+  }
+
+
+  
+  .box {
+    width: 200px;
+    padding: 20px;
+    border: 5px solid #333;
+    margin: 15px;
+    background-color: #cde9ff;
+  }
+
+  
+  .box-content-box {
+    box-sizing: content-box;
+  }
+
+  
+  .box-border-box {
+    box-sizing: border-box;
+    background-color: #d6ffd6;
+  }
+
+  
+  * {
+    box-sizing: border-box;
+  }
+
+
+  
+
+  .color-demo {
+    
+    color: #2b2b2b;              
+    background-color: rgb(255, 244, 214); 
+    border: 2px solid #ff6600;   
+  }
+  
+
+  .rgb-swatch {
+    display: inline-block;
+    width: 80px;
+    height: 40px;
+    margin-right: 10px;
+    color: white;
+    text-align: center;
+    line-height: 40px; 
+    font-family: Arial, sans-serif;
+  }
+
+  .swatch-1 { background-color: #e74c3c; }        /* hex */
+  .swatch-2 { background-color: rgb(46, 204, 113); } /* rgb */
+  .swatch-3 { background-color: rgb(52, 152, 219); } /* rgb */
+
+  .typography-demo {
+    font-family: Georgia, 'Times New Roman', serif;
+    font-size: 18px;
+    line-height: 1.6;   
+    color: #333;
+  }
+
+  .typography-demo .tight {
+    line-height: 1;     /* lines packed closely together */
+  }
+
+  .typography-demo .loose {
+    line-height: 2.2;   /* lines spread far apart */
+  }
+
+
+  
+  .display-demo span,
+  .display-demo div,
+  .display-demo a {
+    background-color: #ffd966;
+    margin: 5px;
+    padding: 10px;
+    border: 1px solid #b8860b;
+  }
+
+  .demo-block {
+    display: block;
+    width: 250px;
+  }
+
+  .demo-inline {
+    display: inline;   
+    width: 250px;
+    height: 100px;
+  }
+
+  .demo-inline-block {
+    display: inline-block;
+    width: 250px;
+    height: 60px;
+  }
+
+  section {
+    margin-bottom: 40px;
+    padding: 15px;
+    border: 1px dashed #999;
+  }
+
+  h2 {
+    font-family: Arial, sans-serif;
+    border-bottom: 2px solid #444;
+    padding-bottom: 5px;
+  }
+
+</style>
+</head>
+<body style="font-family: Arial, sans-serif; max-width: 800px; margin: 30px auto; padding: 0 20px;">
+
+  <h1>CSS Fundamentals Demo</h1>
+
+  
+  <section class="selector-demo">
+    <h2>1. Selectors &amp; Specificity</h2>
+    <p>This is a plain paragraph (element selector: black, italic from .selector-demo p).</p>
+    <p class="highlight">This paragraph has class="highlight" (orange wins over element + italic rule).</p>
+    <p id="special" class="highlight">This paragraph has id="special" AND class="highlight" (id wins: crimson).</p>
+  </section>
+
+ 
+  <section>
+    <h2>2. Box Model &amp; box-sizing</h2>
+    <div class="box box-content-box">content-box: declared width 200px, but renders at 250px total (padding + border added on top).</div>
+    <div class="box box-border-box">border-box: declared width 200px, renders at exactly 200px (padding + border included inside).</div>
+  </section>
+
+ 
+  <section>
+    <h2>3. Colors, Fonts, Font-size, Line-height</h2>
+    <p class="color-demo">This box uses a hex text color, an rgb() background, and a hex border.</p>
+
+    <div>
+      <span class="rgb-swatch swatch-1">#e74c3c</span>
+      <span class="rgb-swatch swatch-2">rgb green</span>
+      <span class="rgb-swatch swatch-3">rgb blue</span>
+    </div>
+
+    <div class="typography-demo">
+      <p class="tight">Tight line-height (1.0): these lines of text sit very close together, which can feel cramped for paragraphs.</p>
+      <p>Normal line-height (1.6): a comfortable, readable spacing that's a common default for body copy.</p>
+      <p class="loose">Loose line-height (2.2): lines are spread far apart, useful for special stylistic emphasis.</p>
+    </div>
+  </section>
+
+ 
+  <section class="display-demo">
+    <h2>4. Display: block, inline, inline-block</h2>
+
+    <div class="demo-block">I'm display:block. I take the full width available and force a line break before and after me.</div>
+    <div class="demo-block">Another block element — notice it starts on its own new line below the previous one.</div>
+
+    <p>
+      Text before <span class="demo-inline">an inline span (width/height ignored)</span> and text after — inline elements flow inside the sentence like normal words.
+    </p>
+
+    <p>
+      Text before <span class="demo-inline-block">inline-block span (width/height respected)</span> and text after — it flows inline but still respects box dimensions.
+    </p>
+  </section>
+
+</body>
+</html>

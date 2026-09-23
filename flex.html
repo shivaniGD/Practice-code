@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Flexbox Practice</title>
+<style>
+  * {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+  }
+
+  body {
+    font-family: 'Segoe UI', Arial, sans-serif;
+    background-color: #f5f6fa;
+    color: #222;
+  }
+
+  .navbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    background-color: #1e2a38;
+    padding: 16px 32px;
+  }
+
+  .logo {
+    color: #ffffff;
+    font-size: 1.5rem;
+    font-weight: 700;
+    letter-spacing: 0.5px;
+  }
+
+  .nav-links {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 24px;
+    list-style: none;
+  }
+
+  .nav-links li a {
+    color: #cfd8dc;
+    text-decoration: none;
+    font-size: 0.95rem;
+    transition: color 0.2s ease;
+  }
+
+  .nav-links li a:hover {
+    color: #ffffff;
+  }
+
+  .container {
+    max-width: 1100px;
+    margin: 48px auto;
+    padding: 0 24px;
+  }
+
+  .container h1 {
+    font-size: 1.8rem;
+    margin-bottom: 24px;
+    text-align: center;
+  }
+
+  .card-grid {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: stretch;
+    gap: 24px;
+  }
+
+  .card {
+    background-color: #ffffff;
+    border-radius: 10px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.08);
+    flex-grow: 1;
+    flex-shrink: 1;
+    flex-basis: 260px;
+    max-width: 320px;
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+  }
+
+  .card-image {
+    height: 160px;
+    background-color: #90a4ae;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #ffffff;
+    font-size: 0.9rem;
+  }
+
+  .card-body {
+    display: flex;
+    flex-direction: column;
+    flex-grow: 1;
+    padding: 20px;
+  }
+
+  .card-body h2 {
+    font-size: 1.15rem;
+    margin-bottom: 8px;
+  }
+
+  .card-body p {
+    font-size: 0.9rem;
+    color: #555;
+    flex-grow: 1;
+    line-height: 1.5;
+  }
+
+  .card-body button {
+    margin-top: 16px;
+    align-self: flex-start;
+    padding: 8px 18px;
+    background-color: #1e2a38;
+    color: #ffffff;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+    font-size: 0.9rem;
+  }
+
+  .card-body button:hover {
+    background-color: #33495e;
+  }
+
+  @media (max-width: 480px) {
+    .navbar {
+      flex-direction: column;
+      align-items: flex-start;
+      gap: 12px;
+    }
+  }
+</style>
+</head>
+<body>
+
+<nav class="navbar">
+  <div class="logo">Flexify</div>
+  <ul class="nav-links">
+    <li><a href="#">Home</a></li>
+    <li><a href="#">Features</a></li>
+    <li><a href="#">Pricing</a></li>
+    <li><a href="#">Contact</a></li>
+  </ul>
+</nav>
+
+<div class="container">
+  <h1>Our Services</h1>
+  <div class="card-grid">
+    <div class="card">
+      <div class="card-image">Image 1</div>
+      <div class="card-body">
+        <h2>Web Design</h2>
+        <p>Clean, responsive layouts built with modern CSS techniques like Flexbox and Grid.</p>
+        <button>Learn More</button>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="card-image">Image 2</div>
+      <div class="card-body">
+        <h2>App Development</h2>
+        <p>Cross-platform apps designed for performance and a smooth user experience.</p>
+        <button>Learn More</button>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="card-image">Image 3</div>
+      <div class="card-body">
+        <h2>SEO Optimization</h2>
+        <p>Improve visibility and rankings with data-driven optimization strategies.</p>
+        <button>Learn More</button>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="card-image">Image 4</div>
+      <div class="card-body">
+        <h2>Branding</h2>
+        <p>Build a consistent, memorable identity across every touchpoint.</p>
+        <button>Learn More</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+</body>
+</html>

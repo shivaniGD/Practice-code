@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h3 class="para1">welcome by class </h3>
+    <h3 id="first">wellcome2</h3>
+    <h3>welcome3</h3>
+
+</body>
+<script>
+    let getfirstheading = document.querySelector("h3")
+    console.log(getfirstheading.innerText)
+    let getallheding = document.querySelectorAll("h3")
+    console.log(getallheding.innerHTML)
+    let byid =document.getElementById("first")
+    console.log(byid)
+    let byclass = document.getElementsByClassName("para1")
+    console.log(byclass)
+
+</script>
+</html>

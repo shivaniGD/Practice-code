@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>JS Function Practice</title>
+<style>
+  body {
+    font-family: Consolas, Monaco, monospace;
+    background: #ffffff;
+    color: #0e0b0b;
+    padding: 30px;
+    max-width: 800px;
+    margin: auto;
+  }
+  h2 {
+    color: #000000;
+    border-bottom: 1px solid #444;
+    padding-bottom: 6px;
+    margin-top: 40px;
+  }
+  pre {
+    background: #2a2a3c;
+    padding: 12px 16px;
+    border-radius: 6px;
+    white-space: pre-wrap;
+    color: #a0e0a0;
+  }
+  .explain {
+    color: #100d0d;
+    font-family: Arial, sans-serif;
+    font-size: 14px;
+    margin-top: 6px;
+    line-height: 1.5;
+  }
+</style>
+</head>
+<body>
+
+<h1>JavaScript Function Practice</h1>
+
+<pre id="out1"></pre>
+
+<pre id="out2"></pre>
+
+<pre id="out3"></pre>
+
+<pre id="out4"></pre>
+
+<pre id="out5"></pre>
+
+<script>
+function log(id, ...args) {
+  const el = document.getElementById(id);
+  el.textContent += args.join(" ") + "\n";
+}
+
+function add(a, b) {
+  return a + b;
+}
+const addArrow = (a, b) => a + b;
+
+const obj = {
+  name: "Sam",
+  greetNormal: function() {
+    return this.name;
+  },
+  greetArrow: () => {
+    return this.name;
+  }
+};
+
+log("out1", "add(2,3) =", add(2, 3));
+log("out1", "addArrow(2,3) =", addArrow(2, 3));
+log("out1", "obj.greetNormal() =", obj.greetNormal());
+log("out1", "obj.greetArrow() =", obj.greetArrow());
+
+
+function createUser(name = "Guest", age = 18, ...roles) {
+  return { name, age, roles };
+}
+const sum = (...numbers) => numbers.reduce((total, n) => total + n, 0);
+
+log("out2", "createUser():", JSON.stringify(createUser()));
+log("out2", "createUser('Alice', 30, 'admin', 'editor'):", JSON.stringify(createUser("Alice", 30, "admin", "editor")));
+log("out2", "sum(1,2,3,4) =", sum(1, 2, 3, 4));
+
+
+function testVar() {
+  if (true) {
+    var x = 10;
+  }
+  return x;
+}
+
+function testLet() {
+  if (true) {
+    let y = 20;
+  }
+  return typeof y;
+}
+
+function loopVar() {
+  for (var i = 0; i < 3; i++) {}
+  return i;
+}
+
+function loopLet() {
+  for (let j = 0; j < 3; j++) {}
+  try {
+    return j;
+  } catch (e) {
+    return e.message;
+  }
+}
+
+log("out3", "testVar() ->", testVar());
+log("out3", "testLet() ->", testLet());
+log("out3", "loopVar() ->", loopVar());
+log("out3", "loopLet() ->", loopLet());
+
+
+function createCounter() {
+  let count = 0;
+  return function() {
+    count += 1;
+    return count;
+  };
+}
+const counter1 = createCounter();
+const counter2 = createCounter();
+
+log("out4", "counter1():", counter1());
+log("out4", "counter1():", counter1());
+log("out4", "counter1():", counter1());
+log("out4", "counter2():", counter2());
+
+
+function applyOperation(arr, operation) {
+  const result = [];
+  for (const item of arr) {
+    result.push(operation(item));
+  }
+  return result;
+}
+const double = n => n * 2;
+const square = n => n * n;
+
+log("out5", "double:", JSON.stringify(applyOperation([1, 2, 3, 4], double)));
+log("out5", "square:", JSON.stringify(applyOperation([1, 2, 3, 4], square)));
+log("out5", "+10:", JSON.stringify(applyOperation([1, 2, 3, 4], n => n + 10)));
+</script>
+
+</body>
+</html>

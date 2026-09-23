@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Simple Quiz</title>
+<style>
+  body {
+    font-family: Arial;
+    text-align: center;
+  }
+
+  .question-box {
+    border: 3px solid black;
+    width: 400px;
+    margin: 20px auto;
+    padding: 20px;
+  }
+
+  .option-box {
+    border: 2px solid gray;
+    padding: 10px;
+    margin: 10px;
+    cursor: pointer;
+  }
+
+  .correct {
+    border-color: green;
+  }
+
+  .wrong {
+    border-color: red;
+  }
+
+  .message {
+    font-weight: bold;
+    margin-top: 10px;
+  }
+</style>
+</head>
+<body>
+
+<h1>quiz</h1>
+
+<div class="question-box" id="questionBox">
+  <h2 id="questionText"></h2>
+
+  <div class="option-box" id="option0"></div>
+  <div class="option-box" id="option1"></div>
+  <div class="option-box" id="option2"></div>
+  <div class="option-box" id="option3"></div>
+
+  <p class="message" id="message"></p>
+
+  <button id="submitBtn">Submit</button>
+</div>
+
+<h2 id="finalScore"></h2>
+
+<script>
+
+ 
+  var questions = [
+    {
+      question: "What is the capital of India?",
+      options: ["Mumbai", "Delhi", "Chennai", "Kolkata"],
+      answer: 1
+    },
+    {
+       question: "What is the capital of India?",
+      options: ["Mumbai", "Delhi", "Chennai", "Kolkata"],
+      answer: 1
+    },
+    {
+      question: "What is the capital of India?",
+      options: ["Mumbai", "Delhi", "Chennai", "Kolkata"],
+      answer: 1
+    }
+  ];
+
+  var currentQuestion = 0;
+  var score = 0;
+  var selectedOption = null;
+
+  var questionText = document.getElementById("questionText");
+  var questionBox = document.getElementById("questionBox");
+  var message = document.getElementById("message");
+  var submitBtn = document.getElementById("submitBtn");
+  var finalScore = document.getElementById("finalScore");
+
+  var optionBoxes = [
+    document.getElementById("option0"),
+    document.getElementById("option1"),
+    document.getElementById("option2"),
+    document.getElementById("option3")
+  ];
+
+  function loadQuestion() {
+
+    
+    selectedOption = null;
+    message.textContent = "";
+    questionBox.classList.remove("correct");
+    questionBox.classList.remove("wrong");
+
+    var q = questions[currentQuestion];
+    questionText.textContent = q.question;
+
+    for (var i = 0; i < optionBoxes.length; i++) {
+      optionBoxes[i].textContent = q.options[i];
+      optionBoxes[i].classList.remove("correct");
+      optionBoxes[i].classList.remove("wrong");
+    }
+  }
+
+
+  for (var i = 0; i < optionBoxes.length; i++) {
+    optionBoxes[i].addEventListener("click", function () {
+
+    
+      for (var j = 0; j < optionBoxes.length; j++) {
+        optionBoxes[j].style.background = "white";
+      }
+
+      
+      this.style.background = "lightyellow";
+
+     
+      selectedOption = optionBoxes.indexOf(this);
+    });
+  }
+
+  function checkAnswer() {
+
+    if (selectedOption === null) {
+      alert("Please select an option first");
+      return;
+    }
+
+    var q = questions[currentQuestion];
+
+    if (selectedOption === q.answer) {
+      questionBox.classList.add("correct");
+      message.textContent = "Answer is correct";
+      score = score + 1;
+    } else {
+      questionBox.classList.add("wrong");
+      message.textContent = "Answer is wrong";
+    }
+
+    
+    for (var i = 0; i < optionBoxes.length; i++) {
+      optionBoxes[i].style.pointerEvents = "none";
+    }
+
+  
+    submitBtn.textContent = "Next";
+    submitBtn.onclick = goNext;
+  }
+
+  function goNext() {
+    currentQuestion = currentQuestion + 1;
+
+    if (currentQuestion < questions.length) {
+      loadQuestion();
+
+      for (var i = 0; i < optionBoxes.length; i++) {
+        optionBoxes[i].style.pointerEvents = "auto";
+        optionBoxes[i].style.background = "white";
+      }
+
+    
+      submitBtn.textContent = "Submit";
+      submitBtn.onclick = checkAnswer;
+
+    } else {
+    
+      questionBox.style.display = "none";
+      finalScore.textContent = "Your Final Score: " + score + " / " + questions.length;
+    }
+  }
+
+  submitBtn.onclick = checkAnswer;
+
+  loadQuestion();
+
+</script>
+
+</body>
+</html>

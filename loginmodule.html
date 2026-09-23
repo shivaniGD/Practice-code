@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+
+        }
+        .stylediv{
+            height: 100vh;
+            width: 35%;
+            background-color: rgb(233, 233, 233);
+            position: fixed;
+            right:-700px;
+            top: 0px;
+            padding: 40px;
+            transition: 02s;
+
+        }
+        .headingmodule{
+            display: flex;
+            justify-content: space-between;
+             margin-top: 100px;
+        }
+        .headingmodule h3{
+            font-size: 25px;
+        }
+        .stylediv form{
+            margin-top: 40px;
+        }
+        .stylediv form label{
+            
+            display: block;
+            font-size: 20px;
+        }
+        .stylediv form input{
+            width: 100%;
+            border-radius: 20px;
+            height: 35px;
+            border-color: blue;
+            border: none;
+        }
+        .stylediv form button{
+            width: 100%;
+            display: block;
+            border-radius: 10px;
+            margin-top: 10px;
+          
+            background-color: rgb(72, 33, 209);
+            text-decoration: none;
+            font-size: large;
+            padding: 15px 0px;
+            border: none;
+
+        }
+        .showmodal{
+            right:0;
+        }
+        .stylediv span{
+            font-size: 30PX;
+            cursor: pointer;
+
+        }
+
+    </style>
+</head>
+<body>
+     <button id="btntoshow">Login</button>
+    <div class="stylediv">
+        <span>&times;</span>
+        <div class="headingmodule">
+         
+            <h3>Login</h3>
+            <h4>Use email insted</h4>
+            
+
+        </div>
+        <form action="">
+            <label for="input1">Mobile Number : </label>
+            <input type="number" name="input1" id="mobile">
+            <button>Login</button>
+            
+        </form>
+      
+    </div>
+   
+</body>
+<script>
+      let loginbtn=document.querySelector("#btntoshow")
+      let closebtn=document.querySelector(".stylediv span")
+      let loginmoduleelement=document.querySelector(".stylediv")
+      loginbtn.addEventListener("click",()=>{
+        
+        loginmoduleelement.classList.add('showmodal')
+
+      })
+      closebtn.addEventListener("click",()=>{
+        loginmoduleelement.classList.remove('showmodal')
+
+      })
+</script>
+</html>

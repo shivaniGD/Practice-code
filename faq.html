@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        *{
+            margin: 0px;
+            padding: 0px;
+            font-family: sans-serif
+
+        }
+        h1{
+            text-align: center;
+            padding: 30px;
+        }
+        .faqmid{
+            max-width: 1000px;
+            margin: auto;
+
+        }
+        .faqitem{
+            border: 1px solid #ccc;
+
+        }
+        .faqitem h3{
+            padding: 15px;
+            cursor: pointer;
+            background: green;
+            position: relative;
+        }
+        .faqitem h3 span{
+            position: absolute;
+            right: 10px;
+        }
+        .faqitem p{
+            padding: 14px;
+            line-height: 30px;
+            font-size: 18px;
+            display: none;
+            
+        }
+        .showans{
+            display: block !important;
+        }
+
+    </style>
+</head>
+<body>
+    <h1>FAQ Section</h1>
+    <hr>
+    <div class="faqmid">
+        <div class="faqitem">
+            <h3>What is a FAQ section?<span>+</span></h3>
+            <p>An FAQ section stands for Frequently Asked Questions. It is a curated list of common questions and clear answers about a product, service, or topic, designed to help people find quick information without calling or emailing support</p>
+         </div>
+          <div class="faqitem">
+            <h3>What is a FAQ section?<span>+</span></h3>
+            <p>An FAQ section stands for Frequently Asked Questions. It is a curated list of common questions and clear answers about a product, service, or topic, designed to help people find quick information without calling or emailing support</p>
+         </div>
+          <div class="faqitem">
+            <h3>What is a FAQ section?<span>+</span></h3>
+            <p>An FAQ section stands for Frequently Asked Questions. It is a curated list of common questions and clear answers about a product, service, or topic, designed to help people find quick information without calling or emailing support</p>
+         </div>
+          <div class="faqitem">
+            <h3>What is a FAQ section?<span>+</span></h3>
+            <p>An FAQ section stands for Frequently Asked Questions. It is a curated list of common questions and clear answers about a product, service, or topic, designed to help people find quick information without calling or emailing support</p>
+         </div>
+          <div class="faqitem">
+            <h3>What is a FAQ section?<span>+</span></h3>
+            <p>An FAQ section stands for Frequently Asked Questions. It is a curated list of common questions and clear answers about a product, service, or topic, designed to help people find quick information without calling or emailing support</p>
+         </div>
+    </div>
+    
+
+    
+</body>
+<script>
+    let allquestions=document.querySelectorAll(".faqitem h3")
+    allquestions.forEach((item,index)=>{
+        item.addEventListener("click",()=>{
+            
+
+
+
+        
+            if(item.lastElementChild.innerHTML=="+"){
+                item.lastElementChild.innerHTML="-"
+
+
+            }else{
+                item.lastElementChild.innerHTML="+"
+            }
+            //current quesion answer show  and hide on click
+            item.nextElementSibling.classList.toggle("showans")
+        })
+    })
+</script>
+</html>

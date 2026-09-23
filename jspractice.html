@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>DOM Practice</title>
+<style>
+  body { font-family: Arial; margin: 20px; }
+  .completed { text-decoration: line-through; color: gray; }
+  li { margin: 5px 0; }
+  #bubbleBox { padding: 20px; background: lightblue; }
+  #bubbleChild { padding: 20px; background: lightgreen; }
+</style>
+</head>
+<body>
+
+<!-- 1) querySelector / querySelectorAll -->
+<div class="box">Box 1</div>
+<div class="box">Box 2</div>
+<div class="box">Box 3</div>
+
+<!-- 4) Event bubbling test -->
+<div id="bubbleBox">
+  Parent
+  <div id="bubbleChild">Child (click me)</div>
+</div>
+
+<!-- 5) To-Do List -->
+<h2>To-Do List</h2>
+<input type="text" id="todoInput" placeholder="Enter task">
+<button id="addBtn">Add</button>
+<ul id="todoList"></ul>
+
+<script>
+
+// 1) querySelector and querySelectorAll
+const firstBox = document.querySelector(".box");
+console.log(firstBox.textContent);
+
+const allBoxes = document.querySelectorAll(".box");
+allBoxes.forEach(box => console.log(box.textContent));
+
+
+// 2) creating, appending, removing DOM elements
+const newBox = document.createElement("div");
+newBox.className = "box";
+newBox.textContent = "Box 4 (created)";
+document.body.appendChild(newBox);
+
+// remove it after 3 seconds (example)
+setTimeout(() => {
+  newBox.remove();
+}, 3000);
+
+
+// 3) click, input, submit event listeners
+document.getElementById("addBtn").addEventListener("click", () => {
+  console.log("Add button clicked");
+});
+
+document.getElementById("todoInput").addEventListener("input", (e) => {
+  console.log("Input value:", e.target.value);
+});
+
+// example submit listener (if inside a form)
+// document.querySelector("form").addEventListener("submit", (e) => {
+//   e.preventDefault();
+//   console.log("Form submitted");
+// });
+
+
+// 4) event bubbling test
+document.getElementById("bubbleBox").addEventListener("click", () => {
+  console.log("Parent clicked (bubbling)");
+});
+
+document.getElementById("bubbleChild").addEventListener("click", (e) => {
+  console.log("Child clicked");
+  // e.stopPropagation(); // uncomment to stop bubbling
+});
+
+
+// 5) To-Do list logic
+const todoInput = document.getElementById("todoInput");
+const addBtn = document.getElementById("addBtn");
+const todoList = document.getElementById("todoList");
+
+addBtn.addEventListener("click", () => {
+  const text = todoInput.value.trim();
+  if (text === "") return;
+
+  const li = document.createElement("li");
+  li.textContent = text;
+
+  const completeBtn = document.createElement("button");
+  completeBtn.textContent = "Done";
+  completeBtn.addEventListener("click", () => {
+    li.classList.toggle("completed");
+  });
+
+  const deleteBtn = document.createElement("button");
+  deleteBtn.textContent = "Delete";
+  deleteBtn.addEventListener("click", () => {
+    li.remove();
+  });
+
+  li.appendChild(completeBtn);
+  li.appendChild(deleteBtn);
+  todoList.appendChild(li);
+
+  todoInput.value = "";
+});
+
+</script>
+</body>
+</html>

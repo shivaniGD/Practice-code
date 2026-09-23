@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>flex direction</title>
+    <style>
+        body {
+            padding: 40px;
+            background-color: aquamarine;
+        }
+        h1 {
+            margin-bottom: 20px;
+
+        }
+        .bodyflex {
+            padding: 20px;
+            display: flex;
+            gap: 40px;
+        }
+        .demo{
+            background-color: white;
+            padding: 20px;
+            border: 1px solid black;
+            width: 30%;
+            border-radius: 20px;
+
+        }
+        .container{
+            border: 1px solid #030202;
+            border-radius: 10px;
+            align-items: center;
+            height: 150px;
+            padding: 20px;
+            display: flex;
+            background-color: rgb(255, 255, 255);
+        }
+        .item{
+            background-color: blue;
+            padding: 10px;
+            text-align: center;
+            border: 1px solid black;
+            border-radius: 5px;
+            font-size: 20px;
+            margin: 5px;
+
+        }
+        .item:nth-child(2){
+            background-color: rgb(43, 194, 207);
+        }
+        .item:nth-child(3){
+            background-color: rgb(21, 96, 163);
+        }
+        .flexcontainer{
+            background-color: white;
+            width:200px;
+            height:230px;
+            display:flex;
+            justify-content: center;
+            align-items: center;
+            border-radius: 12px;
+
+        }
+        .box{
+            background-color: rgb(136, 136, 58);
+            padding: 20px;
+            font-family: Arial, Helvetica, sans-serif;
+            align-items: center;
+
+        }
+
+
+    </style>
+</head>
+<body>
+    <h1>Flex axis cross and main </h1>
+    <div class="bodyflex">
+        <div class="demo">
+            <div class="lable"> main axix = row (default)</div>
+            <div class="arrow">main access direction - left to right </div>
+            <div class="arrow">cross axis direction - top to bottom</div>
+            <div class="container"
+              style="justify-content:center ; align-items: center; " >
+              <div class="item">A</div>
+              <div class="item">B</div>
+              <div class="item">C</div>
+            </div>
+        </div>
+    </div>
+    <div class="demo">
+        <div class="lable"> main axix = column (flex-direction:column)</div>
+        <div class="arrow">main access direction -to   p to bottom</div>
+        <div class="arrow">cross axis direction - left to right</div>
+
+         <div class="container"
+            style="flex-direction: column; justify-content:center ; align-items: center; " > 
+             <div class="item">A</div>
+             <div class="item">B</div>
+             <div class="item">C</div>
+        </div>
+            </div>
+           
+    </div>
+    <br><br>
+    
+
+    <div class="flexcontainer">
+        <div class="box">I am Centered</div>
+    </div>
+    
+</body>
+</html>
